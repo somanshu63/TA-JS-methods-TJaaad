@@ -15,7 +15,7 @@ function addThree(num) {
 }
 addThree();
 /*
-  Create a function named addFive which accepts a number, adds 5 to the number and return the new value.
+  Create a function named   addFive which accepts a number, adds 5 to the number and return the new value.
 */
 function addFive(num) {
   return num + 5;
@@ -135,13 +135,13 @@ console.log(second5(5));
   - return final varibale from the function.
   - also write the required code to call the function.
 */
-
+/*
 let callMe = function(fn) {
-  let final = console.log(fn);
+  let final = fn();
   return final;
 }
 console.log(callMe(addTwo(6)));
-// Data Starts (Don't change this)
+*/// Data Starts (Don't change this)
 const people = [
   { name: 'John Doe', age: 16 },
   { name: 'Thomas Calls', age: 19 },
@@ -266,7 +266,7 @@ let filterAdult = function(arr) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(isAdult(people[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
@@ -295,7 +295,7 @@ let filterMale = function(arr) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(isMale(grades[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
@@ -323,7 +323,7 @@ let filterFemale = function(arr) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(isFemale(grades[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
@@ -352,7 +352,7 @@ let filterGradeA = function(arr) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(isGradeA(grades[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
@@ -380,7 +380,7 @@ let filterGradeB = function(arr) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(isGradeB(grades[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
@@ -407,7 +407,7 @@ let filterGradeC = function(arr) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(isGradeC(grades[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
@@ -437,7 +437,7 @@ let filter = function(arr, fn) {
   let newArr = [];
   for(var i = 0; i < arr.length; i++ ){
     if(fn(arr[i]) == true){
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
   }
   return newArr;
