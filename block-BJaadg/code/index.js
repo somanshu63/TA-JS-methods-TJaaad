@@ -61,7 +61,7 @@ quoteSplitted.join(" ");
 /*
 12. Find the index of second "o" in quote. Use indexOf
 */
-quote.indexOf("o");
+quote.indexOf("o", a);
 /*
 13. Find the last index of letter "a" in quote.
 */
@@ -96,7 +96,7 @@ quote.concat(" ", to).replace("Stark", "Lannister");
 /*
 20. Make the quote of length 30 and put ... at the end. (use slice)
 */
-
+let limit = quote.slice(0, 30) + "...";
 /*
 21. Find out does quote, from, to starts with "A"
 */
