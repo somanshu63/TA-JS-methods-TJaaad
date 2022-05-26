@@ -63,7 +63,7 @@ let sumArray = function(array) {
   return array.reduce(add); 
 }
 // - Make a new array that contains number multiplied by 3 like [6, 18, 27 ...]
-let mulby3Numbers = numbers.map((elements) => elements * 3 );
+let mulby3Numbers = numbers.filter((elements) => elements % 3 == 0);
 // - Create a new array that contains only even numbers
 let evenNumbers = numbers.filter((elements) => elements % 2 == 0);
 // - Create  a new array that contains only odd numbers.
