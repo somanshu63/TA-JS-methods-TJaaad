@@ -16,18 +16,40 @@ let persons = [
 // NOTE: Use reduce method whereever you can to solve this exercise:
 
 // Find the average grade
+let peopleGrade = persons.map(person => person.grade);
+let sumGrade = peopleGrade.reduce(add);
+function add(accumulator, currentValue){
+  return accumulator + currentValue;
+}
+let averageGrade = sumGrade / peopleGrade.length;
+
 
 // Find the average grade of male
+let peopleGradeMale = persons.filter(person => person.sex == "M").map(person => person.grade);
+let sumGradeMale = peopleGradeMale.reduce(add);
+function add(accumulator, currentValue){
+  return accumulator + currentValue;
+}
+let averageGradeMale = sumGradeMale / peopleGradeMale.length;
 
 // Find the average grade of female
+let peopleGradeFemale = persons.filter(person => person.sex == "F").map(person => person.grade);
+let sumGradeFemale = peopleGradeFemale.reduce(add);
+function add(accumulator, currentValue){
+  return accumulator + currentValue;
+}
+let averageGradeFemale = sumGradeFemale / peopleGradeFemale.length;
 
 // Find the highest grade
-
+peopleGrade.sort((a, b) => a - b).pop();
 // Find the highest grade in male
-
+peopleGradeMale.sort((a, b) => a - b).pop();
 // Find the highest grade in female
+peopleGradeFemale.sort((a, b) => a - b).pop();
 
 // Find the highest grade for people whose name starts with 'J' or 'P'
+let highestGradeJP = persons.filter(person => person.name.startsWith("J") || person.name.startsWith("P")).map(person => person.grade);
+highestGradeJP.sort((a, b) => a - b).pop();
 
 const fruitBasket = [
   'banana',
@@ -52,6 +74,10 @@ Output:
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
 
+let fruitsObj = fruitBasket.reduce(function (acc, curr) {
+  return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+}, {});
+
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -61,6 +87,7 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
+ 
 
 const data = [
   [1, 2, 3],
@@ -71,14 +98,24 @@ const data = [
 
 // Using reduce flat data array
 
+const flat = data.reduce((total, amount) => {
+  return total.concat(amount);
+}, []);
+
 const dataTwo = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
   [[10, 11], 12],
 ];
-
 // Using reduce flat dataTwo array
+
+const flatTwo = dataTwo.reduce((total, amount) => {
+  return total.concat(amount);
+}, []);
+const flatFinal = flatTwo.reduce((total, amount) => {
+  return total.concat(amount);
+}, []);
 
 /*
 
@@ -89,6 +126,13 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
+let increment = ((num) => num + 1);
+let double = ((num) => num * 2);
+let decrement = ((num) => num - 1);
+let triple = ((num) => num * 3);
+let half = ((num) => Math.round(num / 2));
+
+
 
 let pipeline = [
   increment,
@@ -115,6 +159,12 @@ EXAMPLE:
   ...
 */
 
+let num = 3;
+for(let i = 0; i < pipeline.length; i++){
+    num = pipeline[i](num);
+}
+//19
+
 let pipeline2 = [
   increment,
   half,
@@ -130,3 +180,9 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+
+let num2 = 8;
+for(let i = 0; i < pipeline2.length; i++){
+    num2 = pipeline2[i](num2);
+}
+// 219
