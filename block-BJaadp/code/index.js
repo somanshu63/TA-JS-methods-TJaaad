@@ -87,7 +87,11 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
- 
+let fruitsArray = Object.keys(fruitsObj).reduce((acc, cv)  => {
+  acc = acc.concat([[cv, fruitsObj[cv]]]);
+  return acc;
+}); 
+
 
 const data = [
   [1, 2, 3],
@@ -109,13 +113,10 @@ const dataTwo = [
   [[10, 11], 12],
 ];
 // Using reduce flat dataTwo array
-
-const flatTwo = dataTwo.reduce((total, amount) => {
-  return total.concat(amount);
-}, []);
-const flatFinal = flatTwo.reduce((total, amount) => {
-  return total.concat(amount);
-}, []);
+data.reduce((acc, cv) => {
+  acc= acc.concat(cv.flat(Infinity));
+  return acc;
+});
 
 /*
 
@@ -158,11 +159,10 @@ EXAMPLE:
 
   ...
 */
-
-let num = 3;
-for(let i = 0; i < pipeline.length; i++){
-    num = pipeline[i](num);
-}
+pipeline.reduce((acc,cv) => {
+  acc = cv(acc);
+  return acc;
+},3);
 //19
 
 let pipeline2 = [
@@ -181,8 +181,8 @@ let pipeline2 = [
 
 // Find the output using pipeline2 the initial value if 8
 
-let num2 = 8;
-for(let i = 0; i < pipeline2.length; i++){
-    num2 = pipeline2[i](num2);
-}
+pipeline2.reduce((acc,cv) => {
+  acc = cv(acc);
+  return acc;
+},8);
 // 219
