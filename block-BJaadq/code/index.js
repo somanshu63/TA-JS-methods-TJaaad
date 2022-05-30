@@ -1,35 +1,86 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
-function countAllPeople() {
-  // your code goes here
+function countAllPeople() {  
+  got.houses.forEach((element,sum = 0) => {
+    sum = sum + element.people.length;
+    return sum;
+  });
+  return sum;
 }
 
+
 function peopleByHouses() {
-  // your code goes here
+  let object = {};     
+  got.houses.forEach((elements) => {
+    object[`${elements.name}`] = elements.people.length;
+} );
+  return object;
 }
 
 function everyone() {
-  // your code goes here
+  let everyonearr = [];
+  for(let i = 0; i < got.houses.length; i++){
+    for(let j = 0; j < got.houses[i].people.length; j++){
+      everyonearr.push(`${got.houses[i].people[j].name}`);
+    }
+  }
+  return everyonearr;
 }
 
 function nameWithS() {
-  // your code goes here
-}
+  let nameWithSs = everyonearr.filter((elements) => elements.includes("s")
+   || elements.includes("S"));  
+    return nameWithSs;
+  }
 
 function nameWithA() {
-  // your code goes here
+  let nameWithAa = everyonearr.filter((elements) => elements.includes("a")
+   || elements.includes("A"));
+   return nameWithAa;  
 }
 
 function surnameWithS() {
-  // your code goes here
+  let checkarr = [];
+  let surnameWithSs = [];
+  let joincheck;
+  for(let i = 0; i < got.houses.length; i++){
+    for(let j = 0; j < got.houses[i].people.length; j++){
+      checkarr = got.houses[i].people[j].name.split(" ");
+      if(checkarr[checkarr.length-1].includes("S")){
+         joincheck = checkarr.join(" ");
+         surnameWithSs.push(`${joincheck}`);
+       }
+    }
+  }
+  return surnameWithSs;
 }
 
 function surnameWithA() {
-  // your code goes here
-}
+    let checkarr = [];
+    let surnameWithAa = [];
+    let joincheck;
+    for(let i = 0; i < got.houses.length; i++){
+      for(let j = 0; j < got.houses[i].people.length; j++){
+        checkarr = got.houses[i].people[j].name.split(" ");
+        if(checkarr[checkarr.length-1].includes("A")){
+           joincheck = checkarr.join(" ");
+           surnameWithAa.push(`${joincheck}`);
+         }
+      }
+    }
+    return surnameWithAa;
+  }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let object = {};  
+  let arr = [];  
+  for(let i = 0; i < got.houses.length; i++){
+    for(let j = 0; j < got.houses[i].people.length; j++){
+      arr.push(`${got.houses[i].people[j].name}`);
+      object[`${got.houses[i].name}`] = arr;
+    }
+  } 
+  return object;
 }
 
 // Testing your result after writing your function
