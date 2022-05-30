@@ -12,20 +12,21 @@ function countAllPeople() {
 function peopleByHouses() {
   let object = {};     
   got.houses.forEach((elements) => {
-    object[`${elements.name}`] = elements.people.length;
+    object[elements.name] = elements.people.length;
 } );
   return object;
 }
 
 function everyone() {
   let everyonearr = [];
-  for(let i = 0; i < got.houses.length; i++){
-    for(let j = 0; j < got.houses[i].people.length; j++){
-      everyonearr.push(`${got.houses[i].people[j].name}`);
-    }
-  }
+  got.houses.forEach(house => {
+    let peopleName = house.people.map(
+      person => person.name
+      );
+      everyonearr = everyonearr.concat(peopleName);
+  });
   return everyonearr;
-}
+} 
 
 function nameWithS() {
   let nameWithSs = everyonearr.filter((elements) => elements.includes("s")
@@ -40,47 +41,27 @@ function nameWithA() {
 }
 
 function surnameWithS() {
-  let checkarr = [];
-  let surnameWithSs = [];
-  let joincheck;
-  for(let i = 0; i < got.houses.length; i++){
-    for(let j = 0; j < got.houses[i].people.length; j++){
-      checkarr = got.houses[i].people[j].name.split(" ");
-      if(checkarr[checkarr.length-1].includes("S")){
-         joincheck = checkarr.join(" ");
-         surnameWithSs.push(`${joincheck}`);
-       }
-    }
-  }
-  return surnameWithSs;
+ let allPeople = everyone();
+ return allPeople.filter((name) => 
+   name.split(" ")[1].toLowerCase().includes("s")
+  );
 }
 
 function surnameWithA() {
-    let checkarr = [];
-    let surnameWithAa = [];
-    let joincheck;
-    for(let i = 0; i < got.houses.length; i++){
-      for(let j = 0; j < got.houses[i].people.length; j++){
-        checkarr = got.houses[i].people[j].name.split(" ");
-        if(checkarr[checkarr.length-1].includes("A")){
-           joincheck = checkarr.join(" ");
-           surnameWithAa.push(`${joincheck}`);
-         }
-      }
-    }
-    return surnameWithAa;
+  let allPeople = everyone();
+  return allPeople.filter((name) => 
+    name.split(" ")[1].toLowerCase().includes("a")
+   );
   }
 
 function peopleNameOfAllHouses() {
-  let object = {};  
-  let arr = [];  
-  for(let i = 0; i < got.houses.length; i++){
-    for(let j = 0; j < got.houses[i].people.length; j++){
-      arr.push(`${got.houses[i].people[j].name}`);
-      object[`${got.houses[i].name}`] = arr;
-    }
-  } 
-  return object;
+  let final = {};
+  got.houses.forEach(house => {
+    final[house.name] = house.people.map(
+      (p) => p.name
+    );
+  });
+  return final;
 }
 
 // Testing your result after writing your function
